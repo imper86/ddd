@@ -1,0 +1,26 @@
+{
+    "name": "imper86/ddd",
+    "description": "standard ddd helpers and value objects for all ddd projects",
+    "type": "library",
+    "authors": [
+        {
+            "name": "imper",
+            "email": "me@imper.info"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Imper86\\DDD\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.4",
+        "ext-bcmath": "*",
+        "symfony/uid": "^5.1",
+        "myclabs/php-enum": "^1.7",
+        "cocur/slugify": "^4.0"
+    },
+    "require-dev": {
+        "imper86/vbump": "^1.0"
+    }
+}
