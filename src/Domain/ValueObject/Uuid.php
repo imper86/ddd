@@ -3,7 +3,6 @@
 namespace Imper86\DDD\Domain\ValueObject;
 
 use Imper86\DDD\Application\UuidValidator;
-use InvalidArgumentException;
 
 /**
  * Class Uuid

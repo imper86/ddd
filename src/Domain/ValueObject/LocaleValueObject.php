@@ -2,8 +2,6 @@
 
 namespace Imper86\DDD\Domain\ValueObject;
 
-use InvalidArgumentException;
-
 abstract class LocaleValueObject extends StringValueObject
 {
     public function __construct(string $value)
