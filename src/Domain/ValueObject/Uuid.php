@@ -53,7 +53,7 @@ abstract class Uuid
     /**
      * @param string $value
      */
-    private function ensureIsValid(string $value)
+    private function ensureIsValid(string $value): void
     {
         if (!UuidValidator::isValid($value)) {
             throw new InvalidArgumentException(

@@ -19,7 +19,7 @@ abstract class NamespacedUuid extends Uuid
      * @param string $name
      * @return static
      */
-    public static function create(string $name): self
+    public static function create(string $name): static
     {
         return new static(UuidFactory::namespaced(static::namespace(), $name));
     }

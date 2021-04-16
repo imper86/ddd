@@ -13,7 +13,7 @@ class OrderableUuid extends Uuid
     /**
      * @return static
      */
-    public static function create(): self
+    public static function create(): static
     {
         return new static(UuidFactory::orderable());
     }

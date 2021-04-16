@@ -27,9 +27,6 @@ abstract class FloatValueObject extends IntValueObject
      */
     public function toFloat(): float
     {
-        return (float) round(
-            bcdiv($this->value(), pow(10, static::scale()), static::scale() + 1),
-            static::scale(),
-        );
+        return round(bcdiv($this->value(), pow(10, static::scale()), static::scale() + 1), static::scale());
     }
 }
