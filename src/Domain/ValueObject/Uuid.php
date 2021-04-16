@@ -2,14 +2,14 @@
 
 namespace Imper86\DDD\Domain\ValueObject;
 
+use Imper86\DDD\Application\UuidValidator;
 use InvalidArgumentException;
-use Symfony\Component\Uid\Uuid as SymfonyUuid;
 
 /**
  * Class Uuid
  * @package Imper86\DDD\Domain\ValueObject
  */
-class Uuid
+abstract class Uuid
 {
     /**
      * @var string
@@ -24,32 +24,6 @@ class Uuid
     {
         $this->value = $value;
         $this->ensureIsValid($value);
-    }
-
-    /**
-     * @return static
-     */
-    public static function random(): self
-    {
-        return new static(SymfonyUuid::v4()->__toString());
-    }
-
-    /**
-     * @param Uuid $namespace
-     * @param string $id
-     * @return static
-     */
-    public static function namespaced(Uuid $namespace, string $id): self
-    {
-        return new static(SymfonyUuid::v5(new SymfonyUuid($namespace->value()), $id));
-    }
-
-    /**
-     * @return static
-     */
-    public static function orderable(): self
-    {
-        return new static(SymfonyUuid::v6()->__toString());
     }
 
     /**
@@ -82,7 +56,7 @@ class Uuid
      */
     private function ensureIsValid(string $value)
     {
-        if (!SymfonyUuid::isValid($value)) {
+        if (!UuidValidator::isValid($value)) {
             throw new InvalidArgumentException(
                 sprintf('<%s> does not allow value <%s>', static::class, $value),
             );
