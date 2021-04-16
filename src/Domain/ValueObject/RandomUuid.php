@@ -8,7 +8,7 @@ use Imper86\DDD\Application\UuidFactory;
  * Class RandomUuid
  * @package Imper86\DDD\Domain\ValueObject
  */
-abstract class RandomUuid extends Uuid
+class RandomUuid extends Uuid
 {
     /**
      * @return static

@@ -8,7 +8,7 @@ use Imper86\DDD\Application\UuidFactory;
  * Class OrderableUuid
  * @package Imper86\DDD\Domain\ValueObject
  */
-abstract class OrderableUuid extends Uuid
+class OrderableUuid extends Uuid
 {
     /**
      * @return static

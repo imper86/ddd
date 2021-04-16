@@ -3,7 +3,7 @@
 namespace Imper86\DDD\Domain\Bus\Event;
 
 use DateTimeImmutable;
-use Imper86\DDD\Domain\ValueObject\Uuid;
+use Imper86\DDD\Domain\ValueObject\OrderableUuid;
 
 /**
  * Class DomainEvent
@@ -36,7 +36,7 @@ abstract class DomainEvent
         ?DateTimeImmutable $occurredOn = null
     ) {
         $this->aggregateId = $aggregateId;
-        $this->eventId = $eventId ?? Uuid::orderable()->value();
+        $this->eventId = $eventId ?? OrderableUuid::create()->value();
         $this->occurredOn = $occurredOn ?? new DateTimeImmutable();
     }
 

@@ -3,7 +3,7 @@
 namespace Imper86\DDD\Domain\Bus\Command;
 
 use DateTimeImmutable;
-use Imper86\DDD\Domain\ValueObject\Uuid;
+use Imper86\DDD\Domain\ValueObject\OrderableUuid;
 
 /**
  * Class Command
@@ -27,7 +27,7 @@ abstract class Command
      */
     public function __construct(?string $commandId = null, ?DateTimeImmutable $dispatchedAt = null)
     {
-        $this->commandId = $commandId ?? Uuid::orderable()->value();
+        $this->commandId = $commandId ?? OrderableUuid::create()->value();
         $this->dispatchedAt = $dispatchedAt ?? new DateTimeImmutable();
     }
 
