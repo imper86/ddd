@@ -8,11 +8,6 @@ namespace Imper86\DDD\Domain\ValueObject;
  */
 abstract class FloatValueObject extends IntValueObject
 {
-    final public function __construct(int $value)
-    {
-        parent::__construct($value);
-    }
-
     /**
      * @param float $value
      * @return static
