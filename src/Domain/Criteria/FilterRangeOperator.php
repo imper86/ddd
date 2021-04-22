@@ -17,8 +17,8 @@ use Imper86\DDD\Domain\ValueObject\EnumValueObject;
  */
 final class FilterRangeOperator extends EnumValueObject
 {
-    public const GT = 'GT';
-    public const GTE = 'GTE';
-    public const LT = 'LT';
-    public const LTE = 'LTE';
+    public const GT = 'gt';
+    public const GTE = 'gte';
+    public const LT = 'lt';
+    public const LTE = 'lte';
 }
