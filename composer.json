@@ -21,6 +21,7 @@
         "cocur/slugify": "^4.0"
     },
     "require-dev": {
-        "imper86/vbump": "^1.0"
+        "imper86/vbump": "^1.0",
+        "phpstan/phpstan": "^0.12.84"
     }
 }

@@ -19,7 +19,7 @@ abstract class Uuid
      * Uuid constructor.
      * @param string $value
      */
-    public function __construct(string $value)
+    final public function __construct(string $value)
     {
         $this->value = $value;
         $this->ensureIsValid($value);

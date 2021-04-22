@@ -8,10 +8,10 @@ namespace Imper86\DDD\Domain\ValueObject;
  */
 abstract class FloatValueObject extends IntValueObject
 {
-    /**
-     * @return int
-     */
-    abstract protected static function scale(): int;
+    final public function __construct(int $value)
+    {
+        parent::__construct($value);
+    }
 
     /**
      * @param float $value
@@ -19,14 +19,34 @@ abstract class FloatValueObject extends IntValueObject
      */
     public static function fromFloat(float $value): self
     {
-        return new static((int) round(bcmul($value, pow(10, static::scale()), 1)));
+        return new static(
+            (int)round(
+                (float)bcmul(
+                    (string)$value,
+                    (string)pow(10, static::scale()),
+                    1
+                )
+            )
+        );
     }
+
+    /**
+     * @return int
+     */
+    abstract protected static function scale(): int;
 
     /**
      * @return float
      */
     public function toFloat(): float
     {
-        return round(bcdiv($this->value(), pow(10, static::scale()), static::scale() + 1), static::scale());
+        return round(
+            (float)bcdiv(
+                (string)$this->value(),
+                (string)pow(10, static::scale()),
+                static::scale() + 1
+            ),
+            static::scale()
+        );
     }
 }

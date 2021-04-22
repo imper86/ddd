@@ -7,6 +7,7 @@ use MyCLabs\Enum\Enum;
 /**
  * Class EnumValueObject
  * @package Imper86\DDD\Domain\ValueObject
+ * @extends Enum<EnumValueObject>
  */
 abstract class EnumValueObject extends Enum
 {
