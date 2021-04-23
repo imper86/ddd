@@ -18,9 +18,11 @@ final class Criteria implements \IteratorAggregate
 
     /**
      * Criteria constructor.
+     * @param CriteriaLimit $limit
+     * @param CriteriaPage $page
      * @param Filter ...$filters
      */
-    public function __construct(Filter ...$filters)
+    public function __construct(private CriteriaLimit $limit, private CriteriaPage $page, Filter ...$filters)
     {
         $this->filters = $filters;
     }
@@ -55,5 +57,21 @@ final class Criteria implements \IteratorAggregate
                 yield $filter;
             }
         }
+    }
+
+    /**
+     * @return CriteriaLimit
+     */
+    public function getLimit(): CriteriaLimit
+    {
+        return $this->limit;
+    }
+
+    /**
+     * @return CriteriaPage
+     */
+    public function getPage(): CriteriaPage
+    {
+        return $this->page;
     }
 }
