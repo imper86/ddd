@@ -23,4 +23,9 @@ final class CriteriaPage extends IntValueObject
             );
         }
     }
+
+    public function toOffset(CriteriaLimit $limit): int
+    {
+        return ($this->value() - 1) * $limit->value();
+    }
 }
