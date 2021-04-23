@@ -5,8 +5,9 @@ namespace Imper86\DDD\Domain\Bus\Query;
 
 /**
  * Interface CollectionResponse
+ * @template T
  * @package Imper86\DDD\Domain\Bus\Query
- * @extends \IteratorAggregate<int, Response>
+ * @extends \IteratorAggregate<int, T>
  */
 interface CollectionResponse extends \IteratorAggregate, \Countable
 {
