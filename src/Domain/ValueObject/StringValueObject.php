@@ -11,7 +11,7 @@ abstract class StringValueObject
     /**
      * @var string
      */
-    private string $value;
+    protected string $value;
 
     /**
      * StringValueObject constructor.

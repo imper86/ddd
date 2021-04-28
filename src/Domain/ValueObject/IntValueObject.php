@@ -11,7 +11,7 @@ abstract class IntValueObject
     /**
      * @var int
      */
-    private int $value;
+    protected int $value;
 
     /**
      * IntValueObject constructor.
