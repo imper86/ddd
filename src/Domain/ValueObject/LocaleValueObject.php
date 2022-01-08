@@ -9,7 +9,7 @@ abstract class LocaleValueObject extends StringValueObject
         parent::__construct(strtolower($value));
 
         if (2 !== strlen($value)) {
-            throw new InvalidArgumentException(sprintf('<%s> does not allow value <%s>', static::class, $value));
+            throw new InvalidValueException(sprintf('<%s> does not allow value <%s>', static::class, $value));
         }
     }
 }

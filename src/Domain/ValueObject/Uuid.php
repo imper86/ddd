@@ -56,7 +56,7 @@ abstract class Uuid
     private function ensureIsValid(string $value): void
     {
         if (!UuidValidator::isValid($value)) {
-            throw new InvalidArgumentException(
+            throw new InvalidValueException(
                 sprintf('<%s> does not allow value <%s>', static::class, $value),
             );
         }

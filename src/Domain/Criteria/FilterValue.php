@@ -4,7 +4,7 @@
 namespace Imper86\DDD\Domain\Criteria;
 
 
-use Imper86\DDD\Domain\ValueObject\InvalidArgumentException;
+use Imper86\DDD\Domain\ValueObject\InvalidValueException;
 use Imper86\DDD\Domain\ValueObject\StringValueObject;
 
 /**
@@ -22,7 +22,7 @@ final class FilterValue extends StringValueObject
         parent::__construct($value);
 
         if ('' === $value) {
-            throw new InvalidArgumentException(sprintf('<%s> value cannot be blank', self::class));
+            throw new InvalidValueException(sprintf('<%s> value cannot be blank', self::class));
         }
     }
 }

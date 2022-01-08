@@ -4,7 +4,7 @@
 namespace Imper86\DDD\Domain\Criteria;
 
 
-use Imper86\DDD\Domain\ValueObject\InvalidArgumentException;
+use Imper86\DDD\Domain\ValueObject\InvalidValueException;
 
 /**
  * Class Criteria
@@ -53,7 +53,7 @@ final class Criteria implements \IteratorAggregate
     {
         foreach ($this->filters as $filter) {
             if (!$filter instanceof Filter) {
-                throw new InvalidArgumentException(
+                throw new InvalidValueException(
                     sprintf('<%s> supports only <%s> objects', self::class, Filter::class)
                 );
             }
@@ -63,7 +63,7 @@ final class Criteria implements \IteratorAggregate
     private function assertPageWithLimit(): void
     {
         if ($this->page && !$this->limit) {
-            throw new InvalidArgumentException(
+            throw new InvalidValueException(
                 sprintf(
                     '<%s> you must include <%s> when providing <%s>',
                     self::class,
