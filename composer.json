@@ -20,6 +20,6 @@
     },
     "require-dev": {
         "imper86/vbump": "^1.0",
-        "phpstan/phpstan": "^1.4.6Domain/Criteria/Criteria.php"
+        "phpstan/phpstan": "^1.4.6"
     }
 }
