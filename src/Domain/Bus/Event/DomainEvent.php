@@ -1,70 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imper86\DDD\Domain\Bus\Event;
 
 use DateTimeImmutable;
-use Imper86\DDD\Domain\ValueObject\OrderableUuid;
+use Imper86\DDD\Domain\ValueObject\Uuid;
 
-/**
- * Class DomainEvent
- * @package Imper86\DDD\Domain\Bus\Event
- */
 abstract class DomainEvent
 {
-    /**
-     * @var string
-     */
     private string $aggregateId;
-    /**
-     * @var string
-     */
     private string $eventId;
-    /**
-     * @var DateTimeImmutable
-     */
     private DateTimeImmutable $occurredOn;
 
-    /**
-     * DomainEvent constructor.
-     * @param string $aggregateId
-     * @param string|null $eventId
-     * @param DateTimeImmutable|null $occurredOn
-     */
     public function __construct(
         string $aggregateId,
         ?string $eventId = null,
         ?DateTimeImmutable $occurredOn = null
     ) {
         $this->aggregateId = $aggregateId;
-        $this->eventId = $eventId ?? OrderableUuid::create()->value();
-        $this->occurredOn = $occurredOn ?? new DateTimeImmutable();
+        $this->eventId = $eventId ?: Uuid::orderable()->getValue();
+        $this->occurredOn = $occurredOn ?: new DateTimeImmutable();
     }
 
-    /**
-     * @return string
-     */
-    abstract public static function eventName(): string;
-
-    /**
-     * @return string
-     */
-    public function aggregateId(): string
+    public function getAggregateId(): string
     {
         return $this->aggregateId;
     }
 
-    /**
-     * @return string
-     */
-    public function eventId(): string
+    public function getEventId(): string
     {
         return $this->eventId;
     }
 
-    /**
-     * @return DateTimeImmutable
-     */
-    public function occurredOn(): DateTimeImmutable
+    public function getOccurredOn(): DateTimeImmutable
     {
         return $this->occurredOn;
     }

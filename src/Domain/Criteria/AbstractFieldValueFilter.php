@@ -1,36 +1,21 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Imper86\DDD\Domain\Criteria;
 
-
-/**
- * Class AbstractFieldValueFilter
- * @package Imper86\DDD\Domain\Criteria
- */
 abstract class AbstractFieldValueFilter implements Filter
 {
-    /**
-     * AbstractFieldValueFilter constructor.
-     * @param FilterField $field
-     * @param FilterValue $value
-     */
     public function __construct(private FilterField $field, private FilterValue $value)
     {
     }
 
-    /**
-     * @return FilterField
-     */
-    public function field(): FilterField
+    public function getField(): FilterField
     {
         return $this->field;
     }
 
-    /**
-     * @return FilterValue
-     */
-    public function value(): FilterValue
+    public function getValue(): FilterValue
     {
         return $this->value;
     }

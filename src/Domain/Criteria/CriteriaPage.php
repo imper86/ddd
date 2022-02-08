@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Imper86\DDD\Domain\Criteria;
-
 
 use Imper86\DDD\Domain\ValueObject\IntValueObject;
 use Imper86\DDD\Domain\ValueObject\InvalidValueException;
@@ -26,6 +26,6 @@ final class CriteriaPage extends IntValueObject
 
     public function toOffset(CriteriaLimit $limit): int
     {
-        return ($this->value() - 1) * $limit->value();
+        return ($this->getValue() - 1) * $limit->getValue();
     }
 }

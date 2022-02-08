@@ -1,61 +1,52 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imper86\DDD\Domain\ValueObject;
 
-use Imper86\DDD\Application\UuidValidator;
+use Stringable;
+use Symfony\Component\Uid\Uuid as SymfonyUuid;
 
-/**
- * Class Uuid
- * @package Imper86\DDD\Domain\ValueObject
- */
-abstract class Uuid
+class Uuid implements Stringable
 {
-    /**
-     * @var string
-     */
-    protected string $value;
-
-    /**
-     * Uuid constructor.
-     * @param string $value
-     */
-    final public function __construct(string $value)
+    final public function __construct(protected string $value)
     {
-        $this->value = $value;
         $this->ensureIsValid($value);
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public static function random(): static
+    {
+        return new static(SymfonyUuid::v4()->__toString());
+    }
+
+    public static function orderable(): static
+    {
+        return new static(SymfonyUuid::v6()->__toString());
+    }
+
+    public static function namespaced(string $namespace, string $name): static
+    {
+        return new static(SymfonyUuid::v5(new SymfonyUuid($namespace), $name)->__toString());
+    }
+
+    public function __toString(): string
     {
         return $this->value;
     }
 
-    /**
-     * @return string
-     */
-    public function value(): string
+    public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param Uuid $other
-     * @return bool
-     */
     public function equals(Uuid $other): bool
     {
-        return $this->value() === $other->value();
+        return $this->getValue() === $other->getValue();
     }
 
-    /**
-     * @param string $value
-     */
     private function ensureIsValid(string $value): void
     {
-        if (!UuidValidator::isValid($value)) {
+        if (!SymfonyUuid::isValid($value)) {
             throw new InvalidValueException(
                 sprintf('<%s> does not allow value <%s>', static::class, $value),
             );

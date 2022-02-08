@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Imper86\DDD\Domain\Criteria;
-
 
 final class RangeFilter implements Filter
 {
@@ -13,17 +13,17 @@ final class RangeFilter implements Filter
     ) {
     }
 
-    public function field(): FilterField
+    public function getField(): FilterField
     {
         return $this->field;
     }
 
-    public function operator(): FilterRangeOperator
+    public function getOperator(): FilterRangeOperator
     {
         return $this->operator;
     }
 
-    public function value(): FilterIntValue
+    public function getValue(): FilterIntValue
     {
         return $this->value;
     }

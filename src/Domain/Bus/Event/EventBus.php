@@ -1,15 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imper86\DDD\Domain\Bus\Event;
 
-/**
- * Interface EventBus
- * @package Imper86\DDD\Domain\Bus\Event
- */
 interface EventBus
 {
-    /**
-     * @param DomainEvent ...$events
-     */
     public function publish(DomainEvent ...$events): void;
 }

@@ -1,67 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imper86\DDD\Domain\ValueObject;
 
-/**
- * Class IntValueObject
- * @package Imper86\DDD\Domain\ValueObject
- */
-abstract class IntValueObject
-{
-    /**
-     * @var int
-     */
-    protected int $value;
+use Stringable;
 
-    /**
-     * IntValueObject constructor.
-     * @param int $value
-     */
-    public function __construct(int $value)
+abstract class IntValueObject implements Stringable
+{
+    public function __construct(protected int $value)
     {
-        $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->value;
     }
 
-    /**
-     * @return int
-     */
-    public function value(): int
+    public function getValue(): int
     {
         return $this->value;
     }
 
-    /**
-     * @param IntValueObject $other
-     * @return bool
-     */
     public function equals(IntValueObject $other): bool
     {
-        return $this->value() === $other->value();
+        return $this->getValue() === $other->getValue();
     }
 
-    /**
-     * @param IntValueObject $other
-     * @return bool
-     */
     public function isGreaterThan(IntValueObject $other): bool
     {
-        return $this->value() > $other->value();
+        return $this->getValue() > $other->getValue();
     }
 
-    /**
-     * @param IntValueObject $other
-     * @return bool
-     */
     public function isGreaterOrEqualThan(IntValueObject $other): bool
     {
-        return $this->value() >= $other->value();
+        return $this->getValue() >= $other->getValue();
     }
 }

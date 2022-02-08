@@ -1,11 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imper86\DDD\Domain\Bus\Query;
 
-/**
- * Interface Response
- * @package Imper86\DDD\Domain\Bus\Query
- */
 interface Response
 {
 }

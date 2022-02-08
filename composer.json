@@ -16,11 +16,10 @@
     "require": {
         "php": ">=8.1",
         "ext-bcmath": "*",
-        "symfony/uid": "^6.0",
-        "cocur/slugify": "^4.0"
+        "symfony/uid": "^6.0"
     },
     "require-dev": {
         "imper86/vbump": "^1.0",
-        "phpstan/phpstan": "^0.12.84"
+        "phpstan/phpstan": "^1.4.6Domain/Criteria/Criteria.php"
     }
 }

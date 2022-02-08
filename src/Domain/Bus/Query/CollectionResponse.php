@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Imper86\DDD\Domain\Bus\Query;
 
+use Countable;
+use IteratorAggregate;
+
 /**
- * Interface CollectionResponse
  * @template T
- * @package Imper86\DDD\Domain\Bus\Query
- * @extends \IteratorAggregate<int, T>
+ * @extends IteratorAggregate<int, T>
  */
-interface CollectionResponse extends \IteratorAggregate, \Countable
+interface CollectionResponse extends Response, IteratorAggregate, Countable
 {
     public function totalItems(): int;
 

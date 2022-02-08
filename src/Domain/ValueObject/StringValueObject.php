@@ -1,49 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Imper86\DDD\Domain\ValueObject;
 
-/**
- * Class StringValueObject
- * @package Imper86\DDD\Domain\ValueObject
- */
-abstract class StringValueObject
+use Stringable;
+
+abstract class StringValueObject implements Stringable
 {
-    /**
-     * @var string
-     */
-    protected string $value;
-
-    /**
-     * StringValueObject constructor.
-     * @param string $value
-     */
-    public function __construct(string $value)
+    public function __construct(protected string $value)
     {
-        $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->value;
     }
 
-    /**
-     * @return string
-     */
-    public function value(): string
+    public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param StringValueObject $other
-     * @return bool
-     */
     public function equals(StringValueObject $other): bool
     {
-        return $this->value() === $other->value();
+        return $this->getValue() === $other->getValue();
     }
 }
