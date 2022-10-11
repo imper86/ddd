@@ -10,10 +10,8 @@ use Imper86\DDD\Domain\Bus\Exception\NoResponseException;
 interface QueryBus
 {
     /**
-     * @param Query $query
-     * @return Response|null
      * @throws NoResponseException
      * @throws InvalidResponseException
      */
-    public function ask(Query $query): ?Response;
+    public function ask(Query $query): mixed;
 }
